@@ -83,7 +83,7 @@ section {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    width:100%
+    width: 100%
 }
 
 .navbar__menu li {
@@ -110,6 +110,10 @@ section {
     background: #8f8f8f;
     color: #fff;
     transition: ease 0.3s all;
+}
+
+.navbar__menu.hidden {
+    display: none;
 }
 
 /* Header Styles */

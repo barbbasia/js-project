@@ -50,8 +50,11 @@ document.addEventListener('DOMContentLoaded', function () {
         );
     }
 
+    const menu = document.getElementsByClassName('navbar__menu');
+
     document.addEventListener('scroll', function (event) {
         event.preventDefault();
+        menu[0].classList.remove('hidden');
         for (let i = 0; i < allSections.length; i++) {
             const senctionNo = i + 1;
             const linkedButton = document.querySelector('[data-nav=\'' + senctionNo + '\']');
@@ -63,6 +66,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 allSections[i].classList.remove('your-active-class');
             }
         }
+
+        setTimeout(function hideMenu() {
+            menu[0].classList.add('hidden');
+        }, 10000)
+
     }, true);
 
 // Scroll to anchor ID using scrollTO event
@@ -105,6 +113,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const t1 = performance.now();
     console.log('This code took ' + (t1 - t0) + ' milliseconds.');
-
 
 }); //end of DOMContentLoaded event listener

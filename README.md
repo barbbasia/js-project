@@ -1,6 +1,6 @@
 # Landing Page Project 
 
-![project preview](https://github.com/barbbasia/js-project/img/preview.png?raw=true)
+![project preview](https://github.com/barbbasia/js-project/blob/master/img/preview.png?raw=true)
 
 ## Getting Started
 
