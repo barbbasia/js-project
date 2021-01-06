@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function hideMenu() {
             menu[0].classList.add('hidden');
-        }, 10000)
+        }, 10000);
 
     }, true);
 
