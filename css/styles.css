@@ -106,6 +106,12 @@ section {
     transition: ease 0.3s all;
 }
 
+.navbar__menu.active-button {
+    background: #8f8f8f;
+    color: #fff;
+    transition: ease 0.3s all;
+}
+
 /* Header Styles */
 .page__header {
     background: white;

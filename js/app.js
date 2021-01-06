@@ -53,9 +53,13 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('scroll', function (event) {
         event.preventDefault();
         for (let i = 0; i < allSections.length; i++) {
+            const senctionNo = i + 1;
+            const linkedButton = document.querySelector('[data-nav=\'' + senctionNo + '\']');
             if (sectionInViewport(allSections[i])) {
+                linkedButton.classList.add('active-button');
                 allSections[i].classList.add('your-active-class');
             } else {
+                linkedButton.classList.remove('active-button');
                 allSections[i].classList.remove('your-active-class');
             }
         }

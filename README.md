@@ -1,13 +1,11 @@
-# Landing Page Project
+# Landing Page Project 
 
-## Table of Contents
+![project preview](https://github.com/barbbasia/js-project/img/preview.png?raw=true)
 
-* [Instructions](#instructions)
+## Getting Started
 
-## Instructions
+1. Download the project package
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+2. Host the files locally and open index.html
 
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+The project is based on Udacity [template](https://github.com/udacity/fend/tree/refresh-2019/projects/landing-page)
