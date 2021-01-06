@@ -92,7 +92,7 @@ section {
     width: 1fr;
 }
 
-.navbar__menu a {
+.navbar__menu .menu__link {
     display: block;
     padding: 1em;
     font-weight: bold;
@@ -100,7 +100,7 @@ section {
     color: #000;
 }
 
-.navbar__menu a:hover {
+.navbar__menu .menu__link:hover {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;

@@ -13,7 +13,6 @@
  *
  */
 
-//this works
 document.addEventListener('DOMContentLoaded', function () {
 
     /**
@@ -38,19 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
      */
 
 // build the nav
-
-
 // Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-    /**
-     * End Main Functions
-     * Begin Events
-     *
-     */
+// Set sections as active
 
     function sectionInViewport(section) {
         const bounding = section.getBoundingClientRect();
@@ -63,18 +51,43 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.addEventListener('scroll', function () {
-        console.log("you've clicked document");
         for (let i = 0; i < allSections.length; i++) {
-            // const h1 = document.querySelector('h1');
             if (sectionInViewport(allSections[i])) {
-                console.log(allSections[i] + 'IS in the viewport!');
                 allSections[i].classList.add("your-active-class");
             } else {
-                console.log(allSections[i] + 'NOT in the viewport!');
                 allSections[i].classList.remove("your-active-class");
             }
         }
     }, true)
+
+// Scroll to anchor ID using scrollTO event
+// Scroll to section on link click
+
+    function respondToTheClick(event) {
+
+        if (event.target.nodeName === 'DIV') {
+            console.log('A button was clicked. Content: ' + event.target.textContent + ", Leading to Section " + event.target.dataset.nav);
+            const elData = event.target.dataset.nav;
+            const linkedSection = document.querySelector('[data-nav=\"Section ' + elData + '\"]');
+            const top = linkedSection.offsetTop - 50; //Getting Y position of the target element
+            window.scrollTo({
+                top: top,
+                id: linkedSection.id,
+                behavior: 'smooth'
+            });
+        } else {
+            console.log('you\'ve missed the button and clicked: ' + event.target.nodeName);
+        }
+    }
+
+    const navMenu = document.getElementById('navbar__list');
+    navMenu.addEventListener('click', respondToTheClick);
+
+    /**
+     * End Main Functions
+     * Begin Events
+     *
+     */
 
 // Build menu 
 
@@ -82,16 +95,9 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let i = 1; i <= allSections.length; i++) {
         const linkSection = "#section" + i;
         const sectionTitle = allSections[i - 1].querySelector('h2');
-        const htmlContent = "<li class=\"navbar__menu li\"><a class=\".navbar__menu .menu__link\" href=" + linkSection + ">" + sectionTitle.textContent + "</a></li>";
+        const htmlContent = "<li class=\"navbar__menu li\"><div class=\"navbar__menu menu__link\" data-nav=\"" + i + "\">" + sectionTitle.textContent + "</div></li>";
         navList.insertAdjacentHTML('beforeend', htmlContent);
     }
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
-//extra functions, might be helpful:
 
     const t1 = performance.now();
     console.log('This code took ' + (t1 - t0) + ' milliseconds.');
