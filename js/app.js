@@ -44,31 +44,32 @@ document.addEventListener('DOMContentLoaded', function () {
         const bounding = section.getBoundingClientRect();
         return (
             bounding.top >= 0 &&
-            bounding.left >= 0 &&
-            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+            // bounding.left >= 0 &&
+            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+            // bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
         );
     }
 
-    document.addEventListener('scroll', function () {
+    document.addEventListener('scroll', function (event) {
+        event.preventDefault();
         for (let i = 0; i < allSections.length; i++) {
             if (sectionInViewport(allSections[i])) {
-                allSections[i].classList.add("your-active-class");
+                allSections[i].classList.add('your-active-class');
             } else {
-                allSections[i].classList.remove("your-active-class");
+                allSections[i].classList.remove('your-active-class');
             }
         }
-    }, true)
+    }, true);
 
 // Scroll to anchor ID using scrollTO event
 // Scroll to section on link click
 
     function respondToTheClick(event) {
-
+        event.preventDefault();
         if (event.target.nodeName === 'DIV') {
-            console.log('A button was clicked. Content: ' + event.target.textContent + ", Leading to Section " + event.target.dataset.nav);
+            console.log('A button was clicked. Content: ' + event.target.textContent + ', Leading to Section ' + event.target.dataset.nav);
             const elData = event.target.dataset.nav;
-            const linkedSection = document.querySelector('[data-nav=\"Section ' + elData + '\"]');
+            const linkedSection = document.querySelector('[data-nav=\'Section ' + elData + '\']');
             const top = linkedSection.offsetTop - 50; //Getting Y position of the target element
             window.scrollTo({
                 top: top,
@@ -89,13 +90,12 @@ document.addEventListener('DOMContentLoaded', function () {
      *
      */
 
-// Build menu 
+// Build menu
 
     const navList = document.getElementById('navbar__list');
     for (let i = 1; i <= allSections.length; i++) {
-        const linkSection = "#section" + i;
         const sectionTitle = allSections[i - 1].querySelector('h2');
-        const htmlContent = "<li class=\"navbar__menu li\"><div class=\"navbar__menu menu__link\" data-nav=\"" + i + "\">" + sectionTitle.textContent + "</div></li>";
+        const htmlContent = '<li class=\'navbar__menu li\'><div class=\'navbar__menu menu__link\' data-nav=\'' + i + '\'>' + sectionTitle.textContent + '</div></li>';
         navList.insertAdjacentHTML('beforeend', htmlContent);
     }
 
